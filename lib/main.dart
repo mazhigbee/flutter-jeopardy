@@ -1,13 +1,11 @@
 // BEFORE -- Not working, pre-state pushup
-import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:scoped_model/scoped_model.dart';
 import 'package:triva/Models/SettingsModel.dart';
-import 'Models/Clue.dart';
-import 'package:triva/Views/MyCluesView.dart';
 import 'package:triva/Views/MyAppDrawer.dart';
+import 'package:triva/Views/MyCluesView.dart';
+
+import 'Models/Category.dart';
 
 const String appTitle = "Quick Trivia!";
 
@@ -41,8 +39,26 @@ class MainScreen extends StatelessWidget {
         builder: (context, child, settings) {
       return Scaffold(
           appBar: AppBar(
-            title: Text("Category: ${settings.getChosenCategory.title}"),
-          ),
+              title: FutureBuilder(
+                  future: Category.fetch(SettingsModel.categoriesUrl),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Category>> snapshot) {
+                    if (snapshot.hasData) {
+                      return GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) {
+                              return ChooseCategoryDialog();
+                            }));
+                          },
+                          child: Text(
+                              "Category: ${settings.getChosenCategory.title}"));
+                    } else if (snapshot.hasError) {
+                      return Text("Error");
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  })),
           drawer: new MyAppDrawer(),
           body: Center(child: MyCluesView()));
     });

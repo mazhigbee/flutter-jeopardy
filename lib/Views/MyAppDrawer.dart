@@ -23,15 +23,15 @@ class MyAppDrawer extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       // Where the linear gradient begins and ends
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                       // Add one stop for each color. Stops should increase from 0 to 1
-                      stops: [0.1, 0.5, 0.7, 0.9],
+                      stops: [0.1, 0.33, 0.6, 0.99],
                       colors: [
-                        Colors.blue[800],
-                        Colors.blue[600],
-                        Colors.yellow[400],
-                        Colors.yellow[200],
+                        Colors.red[800],
+                        Colors.red[600],
+                        Colors.purple[400],
+                        Colors.purple[200],
                       ],
                     ),
                     color: Colors.black87,
