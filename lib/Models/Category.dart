@@ -1,6 +1,6 @@
-import 'package:triva/Models/SettingsModel.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 
 class Category {
   int id;

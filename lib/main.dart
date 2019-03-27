@@ -1,4 +1,3 @@
-// BEFORE -- Not working, pre-state pushup
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:triva/Models/SettingsModel.dart';
@@ -6,8 +5,6 @@ import 'package:triva/Views/MyAppDrawer.dart';
 import 'package:triva/Views/MyCluesView.dart';
 
 import 'Models/Category.dart';
-
-const String appTitle = "Quick Trivia!";
 
 void main() {
   final settings = new SettingsModel();

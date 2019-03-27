@@ -2,7 +2,6 @@ import 'SettingsModel.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 class Clue {
   final int id;
   final String answer;
@@ -15,11 +14,18 @@ class Clue {
 
   static List<Clue> clues = [];
 
-  Clue({this.id,this.answer,this.question,this.value,this.airdate,this.category_id,this.game_id,this.invalid_count});
-
+  Clue(
+      {this.id,
+      this.answer,
+      this.question,
+      this.value,
+      this.airdate,
+      this.category_id,
+      this.game_id,
+      this.invalid_count});
 
   factory Clue.fromJson(Map<String, dynamic> json) {
-    return Clue (
+    return Clue(
         id: json['id'],
         answer: json['answer'],
         question: json['question'],
@@ -27,17 +33,16 @@ class Clue {
         airdate: json['airdate'],
         category_id: json['category_id'],
         game_id: json['game_id'],
-        invalid_count: json['invalid_count']
-    );
+        invalid_count: json['invalid_count']);
   }
-  //todo fetch many clues at once..
+
   static Future<List<Clue>> fetch(SettingsModel settings) async {
     final response = await http.get(settings.url);
 
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
       clues.clear();
-      for(var clue in json.decode(response.body)['clues']) {
+      for (var clue in json.decode(response.body)['clues']) {
         clues.add(Clue.fromJson(clue));
       }
       return clues;
@@ -46,5 +51,4 @@ class Clue {
       throw Exception('Failed to load clues');
     }
   }
-
 }
