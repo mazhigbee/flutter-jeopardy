@@ -6,6 +6,11 @@ import 'package:triva/Views/MyCluesView.dart';
 
 import 'Models/Category.dart';
 
+/**
+ * Created by Mazlin Higbee
+ * A flutter app to test your Jeopardy knowledge
+ */
+
 void main() {
   final settings = new SettingsModel();
 

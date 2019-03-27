@@ -10,11 +10,7 @@ class MyAppDrawer extends StatelessWidget {
     return ScopedModelDescendant<SettingsModel>(
         builder: (context, child, settings) {
       return Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the Drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
@@ -23,10 +19,8 @@ class MyAppDrawer extends StatelessWidget {
                   style: TextStyle(color: Colors.white)),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  // Where the linear gradient begins and ends
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
-                  // Add one stop for each color. Stops should increase from 0 to 1
                   stops: [0.1, 0.33, 0.6, 0.99],
                   colors: [
                     Colors.red[800],
@@ -62,8 +56,6 @@ class MyAppDrawer extends StatelessWidget {
             ListTile(
               title: Text('Close'),
               onTap: () {
-                // Update the state of the app
-                // ...
                 Navigator.pop(context);
               },
             ),

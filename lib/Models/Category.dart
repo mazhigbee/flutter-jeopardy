@@ -25,7 +25,6 @@ class Category {
 
     if (response.statusCode == 200) {
       categories.clear();
-      // If the call to the server was successful, parse the JSON
       for (var category in json.decode(response.body)) {
         categories.add(Category.fromJson(category));
       }

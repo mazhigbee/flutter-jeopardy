@@ -40,7 +40,6 @@ class Clue {
     final response = await http.get(settings.url);
 
     if (response.statusCode == 200) {
-      // If the call to the server was successful, parse the JSON
       clues.clear();
       for (var clue in json.decode(response.body)['clues']) {
         clues.add(Clue.fromJson(clue));
